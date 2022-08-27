@@ -12,9 +12,10 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public class CovidReportDbService implements CovidReportService {
 
     private final CovidReportServiceClient covidReportServiceClient;

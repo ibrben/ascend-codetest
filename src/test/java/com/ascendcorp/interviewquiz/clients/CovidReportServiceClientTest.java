@@ -52,8 +52,27 @@ public class CovidReportServiceClientTest {
     }
 
     @Test
-    public void shouldReturnEmptyListWhenFetchCovidReportSuccessButEmptyResponse() {
+    public void shouldReturnEmptyListWhenFetchCovidReportSuccessButEmptyResponse() throws JsonProcessingException {
         // TODO 1.2 Implement unit test for method fetchCovidReport() for case public api response empty array
+        //Programmer code begin
+        //Arrange
+        String mockResponse = objectMapper.writeValueAsString(List.of());
+        webClient = WebClient.builder()
+            .exchangeFunction(clientRequest ->
+                Mono.just(
+                    ClientResponse.create(HttpStatus.OK)
+                        .header("content-type", "application/json")
+                        .body(mockResponse)
+                        .build()
+                )
+            ).build();
+        covidReportServiceClient = new CovidReportServiceClient(webClient);
+
+        //Act
+        List<CovidReportData> actual = covidReportServiceClient.fetchCovidReport();
+
+        //Assert
+        assertThat(actual.size()).isZero();
     }
 
 }

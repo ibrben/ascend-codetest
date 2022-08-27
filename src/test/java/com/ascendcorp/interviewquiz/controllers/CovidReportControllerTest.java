@@ -69,13 +69,56 @@ public class CovidReportControllerTest {
     }
 
     @Test
-    public void shouldResponseOkAndEmptyListWhenCallApiGetReportsWithoutDateSuccessButNoData() {
+    public void shouldResponseOkAndEmptyListWhenCallApiGetReportsWithoutDateSuccessButNoData() throws Exception{
         // TODO 1.3 Implement unit test for api Get Reports for case no date param and api result is empty list
+        // Programmer code begin
+        mockMvc.perform(
+            get("/covid-cases/reports")
+        )
+        .andExpect(status().isOk())
+        .andExpect(content().json("[]"));
+        // Programmer code end
     }
 
     @Test
     public void shouldResponseOkAndCovidProvinceCaseResponseWhenCallApiGetHighestLowestReportsSuccess() {
         // TODO 1.4 Implement unit test for api Get Highest Lowest Reports for case success
+
+        //Programmer code begin
+        //Arrange
+        CovidReportData case1 = new CovidReportData(
+            "2022-01-01",
+            2L,
+            135L,
+            "bkk",
+            0L,
+            0L
+        );
+        CovidReportData case2 = new CovidReportData(
+            "2022-01-02",
+            3L,
+            138L,
+            "bkk",
+            0L,
+            0L
+        );
+        CovidReportData case3 = new CovidReportData(
+            "2022-01-03",
+            20L,
+            158L,
+            "bkk",
+            0L,
+            0L
+        );
+        CovidReportData case4 = new CovidReportData(
+            "2022-01-04",
+            100L,
+            238L,
+            "bkk",
+            0L,
+            0L
+        );
+        //Programmer code end
     }
 
     @Test

@@ -1,6 +1,10 @@
 package com.ascendcorp.interviewquiz.clients;
 
 import com.ascendcorp.interviewquiz.models.CovidReportData;
+
+import reactor.core.publisher.Flux;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +25,13 @@ public class CovidReportServiceClient {
 
     public List<CovidReportData> fetchCovidReport() {
         // TODO 1.1 Implement calling public api to get covid cases data
-        return Arrays.asList();
-    }
+        
+        // Programmer code begin
+        List<CovidReportData> reports = new ArrayList<CovidReportData>() ;
+        var reportData = webClient.get().uri(COVID_REPORT_SOURCE_ENDPOINT)
+            .retrieve().bodyToFlux(CovidReportData.class).collectList().block();//.subscribe(success -> reports.add(success), throwable -> System.out.println("err"));;
 
+        // Programmer code end
+        return reportData;
+    }
 }
