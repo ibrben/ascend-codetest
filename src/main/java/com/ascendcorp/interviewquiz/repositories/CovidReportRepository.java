@@ -4,11 +4,15 @@ import com.ascendcorp.interviewquiz.entities.CovidReportEntity;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CovidReportRepository extends JpaRepository<CovidReportEntity, Long> {
 
     Optional<List<CovidReportEntity>> findByDateIs(String date);
+
+    @Query("SELECT max(date) FROM CovidReportEntity")
+    Optional<String> getLastReportedDate();
 
 }

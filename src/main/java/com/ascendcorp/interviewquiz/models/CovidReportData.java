@@ -30,6 +30,7 @@ public class CovidReportData {
     ) {
         this.txnDate = txnDate;
         this.newCase = newCase;
+        this.province = province;
         this.totalCase = totalCase;
         this.newCaseExcludeAbroad = newCaseExcludeAbroad;
         this.totalCaseExcludeAbroad = totalCaseExcludeAbroad;

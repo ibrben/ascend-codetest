@@ -42,6 +42,7 @@ public class CovidReportEntity {
         this.date = date;
         this.newCase = newCase;
         this.totalCase = totalCase;
+        this.province = province;
         this.newCaseExcludeAbroad = newCaseExcludeAbroad;
         this.totalCaseExcludeAbroad = totalCaseExcludeAbroad;
     }

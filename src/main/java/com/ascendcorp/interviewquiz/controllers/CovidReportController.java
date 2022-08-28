@@ -21,7 +21,7 @@ public class CovidReportController {
     private final String covidReportServiceName;
 
     public CovidReportController(
-        @Qualifier("covidReportApiService") CovidReportService covidReportService
+        @Qualifier("covidReportDbService") CovidReportService covidReportService
     ) {
         this.covidReportService = covidReportService;
         this.covidReportServiceName = covidReportService.getClass().getSimpleName();
